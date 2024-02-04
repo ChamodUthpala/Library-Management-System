@@ -1,2 +1,12 @@
 # Library-Management-System
 CTEC31013|Assignment 2- Group Assignment 
+
+Group Name : DevDragons
+
+Group Members:
+CT/2019/001 - D.G.I.U.SAMARASINGHE 
+CT/2019/002 - BANDARA J.M.I.A.L
+CT/2019/009 - DEWMINI W.A.H.C
+CT/2019/036 - DIVITHOTAWELA A.M.D.D
+CT/2019/046 - WEERASINGHE S.S
+CT/2019/050 - KARUNATHILAKA T.A.D.C.U
