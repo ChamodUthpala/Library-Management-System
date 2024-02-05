@@ -56,7 +56,7 @@
             <input type="number" class="form-control" id="fineAmount" required>
             <small class="error-message" id="fineAmountError"></small>
         </div>
-        <button type="button" class="btn btn-custom">Assign Fine</button>
+        <button type="button" class="btn btn-custom" onclick="assignFine()">Assign Fine</button>
 		<button type="reset" class="btn btn-custom" style="background-color: #888888">Clear Data</button>
     </form>
 </div>
@@ -75,9 +75,42 @@
                 <th>Action</th>
             </tr>
         </thead>
-        
+        <tbody id="fineTableBody">
+            <!-- Assigned fines will be displayed here dynamically -->
+        </tbody>
     </table>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+<script>
+    // Sample data (replace this with dynamic data from the server)
+    const assignedFines = [];
+
+    // Function to assign fines
+    function assignFine() {
+        // Fetch input values
+        const fineID = document.getElementById('fineID').value;
+        const memberID = document.getElementById('memberID').value;
+        const bookID = document.getElementById('bookID').value;
+        const fineAmount = document.getElementById('fineAmount').value;
+
+        // Validate fine amount
+        if (fineAmount < 2 || fineAmount > 500) {
+            document.getElementById('fineAmountError').innerText = 'Fine amount must be between 2 LKR and 500 LKR.';
+            return;
+        }
+
+        // Clear error message if validation passes
+        document.getElementById('fineAmountError').innerText = '';
+
+        
+    }
+    
+</script>
 
 </body>
 </html>
