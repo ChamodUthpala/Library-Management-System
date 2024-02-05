@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library System</title>
+    <link rel="stylesheet" href="Feature-1_CT_2019_001.css" />
+    <script src="Feature-1_CT_2019_001.js"></script>
+   
+  </head>
+  <body>
+    
+
+    <form id="staffForm">
+      <h1 style="text-align: center">UOK LIBRARY MANAGEMENT SYSTEM</h1>
+      <hr />
+      <h2 style="text-align: center">Login and User registration</h2>
+      <label for="User_ID">User_ID:</label>
+      <input type="text" id="User_ID" required />
+
+      <label for="First_Name">First Name:</label>
+      <input type="text" id="First_Name" required />
+
+      <label for="Last_Name">Last Name:</label>
+      <input type="text" id="Last_Name" required />
+
+      <label for="Username">Username:</label>
+      <input type="text" id="Username" required />
+
+      <label for="Password">Password:</label>
+      <input type="Password" id="Password" required />
+
+      <label for="Email_Address">Email Address:</label>
+      <input type="email" id="Email_Address" required />
+
+      <button type="button" onclick="registerStaff()">Register Staff</button>
+
+      <a href="login.html">Already have an account? Login here</a>
+    </form>
+
+    <hr />
+<div> 
+    <h2 style="text-align: center" ;>Registered Staff</h2>
+    <table id="registeredStaffTable">
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Email Address</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  </body>
+</html>
