@@ -36,9 +36,9 @@
 
     <table id="bookTable">
         <thead>
-            <caption>Book Details</caption> 
+            <caption>Book Details</caption>
             <tr>
-                 
+
                 <th>Book ID</th>
                 <th>Book Name</th>
                 <th>Book Category</th>
@@ -49,41 +49,85 @@
             <!-- Book entries will be added here dynamically -->
         </tbody>
     </table>
-    
 
-        <script>
-            function registerBook() {
-                var bookId = document.getElementById('book_id').value;
-                var bookName = document.getElementById('book_name').value;
-                var bookCategory = document.getElementById('book_category').value;
 
-                // Validate input
-                var bookIdRegex = /^B\d{3}$/;
-                if (!bookIdRegex.test(bookId)) {
-                    alert('Invalid Book ID format. Please use "B" followed by three digits (e.g., B001).');
-                    return;
-                }
+    <script>
+        function registerBook() {
+            var bookId = document.getElementById('book_id').value;
+            var bookName = document.getElementById('book_name').value;
+            var bookCategory = document.getElementById('book_category').value;
 
-                // Add a new row to the table
-                var table = document.getElementById('bookTable').getElementsByTagName('tbody')[0];
-                var newRow = table.insertRow(table.rows.length);
-                var cell1 = newRow.insertCell(0);
-                var cell2 = newRow.insertCell(1);
-                var cell3 = newRow.insertCell(2);
-                var cell4 = newRow.insertCell(3);
-
-                cell1.innerHTML = bookId;
-                cell2.innerHTML = bookName;
-                cell3.innerHTML = bookCategory;
-                cell4.innerHTML = '<div class="action-buttons"><button onclick="editBook(this)">Edit</button><button onclick="deleteBook(this)">Delete</button></div>';
-
-                // Clear form fields
-                document.getElementById('book_id').value = '';
-                document.getElementById('book_name').value = '';
-                document.getElementById('book_category').value = 'Fiction'; // Reset to default category
-
+            // Validate input
+            var bookIdRegex = /^B\d{3}$/;
+            if (!bookIdRegex.test(bookId)) {
+                alert('Invalid Book ID format. Please use "B" followed by three digits (e.g., B001).');
+                return;
             }
-        </script>
+
+            // Add a new row to the table
+            var table = document.getElementById('bookTable').getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow(table.rows.length);
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+
+            cell1.innerHTML = bookId;
+            cell2.innerHTML = bookName;
+            cell3.innerHTML = bookCategory;
+            cell4.innerHTML = '<div class="action-buttons"><button onclick="editBook(this)">Edit</button><button onclick="deleteBook(this)">Delete</button></div>';
+
+            // Clear form fields
+            document.getElementById('book_id').value = '';
+            document.getElementById('book_name').value = '';
+            document.getElementById('book_category').value = 'Fiction'; // Reset to default category
+
+        }
+
+
+        function editBook(button) {
+            var row = button.parentNode.parentNode.parentNode; // Get the row
+            var cells = row.getElementsByTagName('td');
+            var bookId = cells[0].innerText;
+            var bookName = cells[1].innerText;
+            var bookCategory = cells[2].innerText;
+
+            // Populate the form fields with the selected book details
+            document.getElementById('book_id').value = bookId;
+            document.getElementById('book_name').value = bookName;
+            document.getElementById('book_category').value = bookCategory;
+
+            // Remove the row from the table
+            row.parentNode.removeChild(row);
+        }
+
+        function deleteBook(button) {
+            var row = button.parentNode.parentNode.parentNode; // Get the row
+            row.parentNode.removeChild(row); // Remove the row from the table
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
 
 
 
