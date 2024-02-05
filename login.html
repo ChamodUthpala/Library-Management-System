@@ -62,7 +62,7 @@
     </style>
   </head>
   <body>
-    <form method="POST" action="login_registration.php" id="login">
+    <form method="POST" action="login_registration.php" id="login" onsubmit="return validateForm()">
       <h2>User Login</h2>
       <label for="login_username">Username:</label>
       <input type="text" name="login_username" required />
