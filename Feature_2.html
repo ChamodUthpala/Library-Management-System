@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Registration</title>
+    <link rel="stylesheet" href="Feature_2.css">
+</head>
+
+<body>
+
+    <form id="bookForm" method="post" action="Feature_2.php">
+        <h2>Books Registration</h2>
+        <label for="book_id">Book ID:</label>
+        <input type="text" id="book_id" required>
+
+        <label for="book_name">Book Name:</label>
+        <input type="text" id="book_name" required>
+
+        <label for="book_category">Book Category:</label>
+        <select id="book_category" required>
+            <option value="Fiction">Fiction</option>
+            <option value="Non-Fiction">Non-Fiction</option>
+            <option value="Romance">Romance</option>
+            <option value="Novels">Novels</option>
+            <option value="Short Stories">Short Stories</option>
+            <option value="Cooking Books">Cooking Books</option>
+            <option value="Science & Technology">Science & Technology</option>
+            <option value="Information Communication Technology">Information Communication Technology</option>
+
+        </select>
+
+        <button type="button" onclick="registerBook()">Register Book</button>
+    </form>
+
+
+
+
+
+
+        <script>
+            function registerBook() {
+                var bookId = document.getElementById('book_id').value;
+                var bookName = document.getElementById('book_name').value;
+                var bookCategory = document.getElementById('book_category').value;
+
+                // Validate input
+                var bookIdRegex = /^B\d{3}$/;
+                if (!bookIdRegex.test(bookId)) {
+                    alert('Invalid Book ID format. Please use "B" followed by three digits (e.g., B001).');
+                    return;
+                }
+
+             
+            }
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </form>
+</body>
+
+</html>
