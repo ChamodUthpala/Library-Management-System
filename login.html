@@ -73,18 +73,19 @@
       <button type="submit" name="login">Login</button>
   </form>
 
-    <script>
-      function validateForm() {
-        var password = document.getElementById("login_password").value;
+  <script>
+    function validateForm() {
+      var password = document.getElementById("login_password").value;
 
-        if (password.length < 8) {
-          alert("Passwords must be more than 8 characters. Please enter a valid password.");
-          return false; // Prevent form submission
-        }
-
-        // If password length is valid, continue with form submission
-        return true;
+      if (password.length < 8) {
+        alert("Passwords must be more than 8 characters. Please enter a valid password.");
+        return false; // Prevent form submission
       }
-  </script>
+
+      // If password length is valid, continue with form submission
+      return true;
+    }
+</script>
+ 
   </body>
 </html>
