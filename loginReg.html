@@ -99,6 +99,93 @@
     </style>
   </head>
   <body>
+    <script>
+      function registerStaff() {
+  // Get values from input fields
+  var userId = document.getElementById("User_ID").value;
+  var firstName = document.getElementById("First_Name").value;
+  var lastName = document.getElementById("Last_Name").value;
+  var username = document.getElementById("Username").value;
+  var password = document.getElementById("Password").value;
+  var emailAddress = document.getElementById("Email_Address").value;
+
+  // Validate password length, email format, and user ID format
+  if (password.length < 8) {
+    alert("Password must be at least 8 characters long.");
+    return; // Stop the registration process
+  }
+
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(emailAddress)) {
+    alert("Invalid email address format.");
+    return; // Stop the registration process
+  }
+
+  var userIdRegex = /^U\d{3}$/;
+  if (!userIdRegex.test(userId)) {
+    alert("User ID should be in the format U001.");
+    return; // Stop the registration process
+  }
+
+  // Proceed with registration since all validations passed
+  // Create a new table row
+  var table = document
+    .getElementById("registeredStaffTable")
+    .getElementsByTagName("tbody")[0];
+  var newRow = table.insertRow(table.rows.length);
+
+  // Append cells with user details and action buttons
+  newRow.innerHTML = `
+          <td>${userId}</td>
+          <td>${firstName}</td>
+          <td>${lastName}</td>
+          <td>${username}</td>
+          <td>${password}</td>
+          <td>${emailAddress}</td>
+          <td>
+              <button onclick="editRow(this)">Edit</button>
+              <button onclick="deleteRow(this)">Delete</button>
+          </td>
+      `;
+
+  // Clear the input fields
+  document.getElementById("User_ID").value = "";
+  document.getElementById("First_Name").value = "";
+  document.getElementById("Last_Name").value = "";
+  document.getElementById("Username").value = "";
+  document.getElementById("Password").value = "";
+  document.getElementById("Email_Address").value = "";
+}
+
+function checkExistingRegistrations(username, emailAddress) {
+  // Dummy check for existing registrations (replace with server-side check)
+  // In a real-world scenario, you would perform server-side checks against a database
+  // This is just an example, and it always returns false for the sake of demonstration
+  return false;
+}
+
+function deleteRow(button) {
+  // Delete the row when the delete button is clicked
+  var row = button.parentNode.parentNode;
+  row.parentNode.removeChild(row);
+}
+
+function editRow(button) {
+  // Get the row of the clicked button
+  var row = button.parentNode.parentNode;
+
+  // Populate the form with the data from the selected row
+  document.getElementById("User_ID").value = row.cells[0].innerHTML;
+  document.getElementById("First_Name").value = row.cells[1].innerHTML;
+  document.getElementById("Last_Name").value = row.cells[2].innerHTML;
+  document.getElementById("Username").value = row.cells[3].innerHTML;
+  document.getElementById("Password").value = row.cells[4].innerHTML;
+  document.getElementById("Email_Address").value = row.cells[5].innerHTML;
+
+  // Remove the edited row from the table
+  row.parentNode.removeChild(row);
+}
+      </script>
     <form id="staffForm">
       <h1 style="text-align: center">UOK LIBRARY MANAGEMENT SYSTEM</h1>
       <hr />
