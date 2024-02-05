@@ -107,9 +107,37 @@
         // Clear error message if validation passes
         document.getElementById('fineAmountError').innerText = '';
 
-        
+        assignedFines.push({
+            fineID: fineID,
+            memberID: memberID,
+            memberName: `Member ${memberID.substring(1)}`, // Replace with actual member name retrieval logic
+            bookName: `Book ${bookID.substring(1)}`, // Replace with actual book name retrieval logic
+            fineAmount: fineAmount,
+            dateModified: new Date().toLocaleString()
+        });
+
+        updateFineTable();
     }
-    
+
+    function updateFineTable() {
+        const tableBody = document.getElementById('fineTableBody');
+        tableBody.innerHTML = ''; // Clear existing rows
+
+        // Iterate through assigned fines and create table rows
+        assignedFines.forEach(fine => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${fine.fineID}</td>
+                <td>${fine.memberID}</td>
+                <td>${fine.memberName}</td>
+                <td>${fine.bookName}</td>
+                <td>${fine.fineAmount}</td>
+                <td>${fine.dateModified}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+
 </script>
 
 </body>
