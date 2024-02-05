@@ -133,10 +133,25 @@
                 <td>${fine.bookName}</td>
                 <td>${fine.fineAmount}</td>
                 <td>${fine.dateModified}</td>
+                <td><button class="btn btn-danger" onclick="deleteFine('${fine.fineID}')">Delete</button></td>
             `;
             tableBody.appendChild(row);
-        });
+        }); 
     }
+
+    // Function to delete an assigned fine
+    function deleteFine(fineID) {
+        // Sample: Remove the fine record from the array (replace with server-side logic)
+        const index = assignedFines.findIndex(fine => fine.fineID === fineID);
+        if (index !== -1) {
+            assignedFines.splice(index, 1);
+            // Call a function to update the table (replace with server-side logic)
+            updateFineTable();
+        }
+    }
+
+     // Initial table update
+     updateFineTable();
 
 </script>
 
