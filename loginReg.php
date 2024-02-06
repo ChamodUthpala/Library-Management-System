@@ -128,22 +128,12 @@ if (isset($_POST['submit']) && isset($_GET['edit_user_id'])) {
 }
 
 
-//display_users.php
-         
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "library_test";
+$conn->close();
+?>
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
+<?php
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-
+include 'db_config.php';
 
 $result = $conn->query("SELECT * FROM user");
 
@@ -156,7 +146,7 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["username"] . "</td>";
         echo "<td>" . $row["password"] . "</td>";
         echo "<td>" . $row["email"] . "</td>";
-
+         
         echo "<td>";
         echo "<button class='edit' onclick='editUser(\"$row[user_id]\", \"$row[first_name]\", \"$row[last_name]\", \"$row[username]\", \"$row[password]\",\"$row[email]\")'>Edit</button>&nbsp";
         echo "<button class='delete' onclick='deleteUserr(\"" . $row['user_id'] . "\")'>Delete</button>";
@@ -165,14 +155,6 @@ if ($result->num_rows > 0) {
     }
 }
 
-
-$conn->close();
+ 
 ?>
 
-
-
- 
-         
-
-
-         
