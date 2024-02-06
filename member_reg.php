@@ -1,4 +1,6 @@
 <?php
+
+
 //database configuraion
 $servername = "localhost";
 $username = "root";
